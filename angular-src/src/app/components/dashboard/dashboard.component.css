@@ -1,0 +1,10 @@
+.productTable {
+  width: 100%;
+  border: 1px solid cyan;
+}
+
+tr,
+td,
+th {
+  text-align: center;
+}

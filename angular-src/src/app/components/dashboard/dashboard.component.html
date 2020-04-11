@@ -1,0 +1,35 @@
+<h2 class="page-header">Products</h2>
+<p>
+  Browse for products:
+</p>
+<table class="productTable">
+  <th>Name</th>
+  <th>Chapters</th>
+  <th>Genre</th>
+  <th>Actions</th>
+  <tr *ngFor="let product of Products; let i = index" id="{{ i }}">
+    <td>{{ product.name }}</td>
+    <td>{{ product.chapters }}</td>
+    <td>{{ product.genre }}</td>
+    <td>
+      <input
+        type="button"
+        class="btn btn-primary"
+        value="Delete"
+        (click)="onDeleteClick(i)"
+      />
+      <input
+        type="button"
+        class="btn btn-primary"
+        value="Modify"
+        (click)="onModifyClick(i)"
+      />
+    </td>
+  </tr>
+</table>
+<input
+  type="button"
+  class="btn btn-primary mt-2"
+  value="Add New"
+  (click)="onAddClick()"
+/>
