@@ -10,6 +10,7 @@ const config = require("./config/database");
 mongoose.connect(config.database, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: true,
 });
 
 mongoose.connection.on("connected", () => {
@@ -19,12 +20,13 @@ mongoose.connection.on("connected", () => {
 const app = express();
 
 const users = require("./routes/users");
+const products = require("./routes/products");
 const port = 5000;
 
 //Middlewares
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public/dist")));
 
 app.use(bodyParser.json());
 
@@ -35,10 +37,15 @@ app.use(passport.session());
 require("./config/passport")(passport);
 
 app.use("/users", users);
+app.use("/products", products);
 
 //Index
 app.get("/", (req, res) => {
   res.send("Invalid Endpoint");
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/dist/index.html"));
 });
 
 //Start
