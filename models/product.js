@@ -27,13 +27,14 @@ module.exports.deleteProduct = function (name, callback) {
   Product.remove(query, callback);
 };
 
-module.exports.modifyProduct = function (product, callback) {
-  const query = { name: product.name };
+module.exports.modifyProduct = function (oldname, product, callback) {
+  const query = { name: oldname };
   const modified = {
     name: product.name,
     chapters: product.chapters,
     genre: product.genre,
   };
+  console.log(modified);
   Product.findOneAndUpdate(query, modified, callback);
 };
 

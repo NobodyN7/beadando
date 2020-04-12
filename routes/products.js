@@ -61,8 +61,9 @@ router.post("/modifyProduct", (req, res) => {
     chapters: req.body.chapters,
     genre: req.body.genre,
   });
+  const oldname = req.body.oldname;
 
-  Product.modifyProduct(modifiedProduct, (err, doc) => {
+  Product.modifyProduct(oldname, modifiedProduct, (err, doc) => {
     if (err) {
       res.json({
         success: false,

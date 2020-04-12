@@ -10,6 +10,7 @@ import { StorageServiceService } from "../../services/storage-service.service";
   styleUrls: ["./modify.component.css"],
 })
 export class ModifyComponent implements OnInit {
+  oldName: String;
   name: String;
   chapters: String;
   genre: String;
@@ -28,6 +29,7 @@ export class ModifyComponent implements OnInit {
     console.log(this.modifiedProduct);
     this.authService.getProduct(this.modifiedProduct).subscribe((data) => {
       this.name = data.name;
+      this.oldName = this.name;
       this.chapters = data.chapters;
       this.genre = data.genre;
     });
@@ -35,6 +37,7 @@ export class ModifyComponent implements OnInit {
 
   onModifySubmit() {
     const product = {
+      oldname: this.oldName,
       name: this.name,
       chapters: this.chapters,
       genre: this.genre,

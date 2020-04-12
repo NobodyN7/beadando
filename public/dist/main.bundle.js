@@ -716,6 +716,7 @@ var ModifyComponent = (function () {
         console.log(this.modifiedProduct);
         this.authService.getProduct(this.modifiedProduct).subscribe(function (data) {
             _this.name = data.name;
+            _this.oldName = _this.name;
             _this.chapters = data.chapters;
             _this.genre = data.genre;
         });
@@ -723,6 +724,7 @@ var ModifyComponent = (function () {
     ModifyComponent.prototype.onModifySubmit = function () {
         var _this = this;
         var product = {
+            oldname: this.oldName,
             name: this.name,
             chapters: this.chapters,
             genre: this.genre,
@@ -1114,7 +1116,7 @@ module.exports = "<h2 class=\"page-header\">Login</h2>\n<form (submit)=\"onLogin
 /***/ 702:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header mt-5\">Modify Product</h2>\n<form (submit)=\"onModifySubmit()\">\n  <div class=\"form-group\">\n    <label>Name</label>\n    <input\n      type=\"text\"\n      [(ngModel)]=\"name\"\n      name=\"name\"\n      class=\"form-control\"\n      disabled\n    />\n  </div>\n  <div class=\"form-group\">\n    <label>Chapters</label>\n    <input\n      type=\"number\"\n      [(ngModel)]=\"chapters\"\n      name=\"chapters\"\n      class=\"form-control\"\n    />\n  </div>\n  <div class=\"form-group\">\n    <label>Genre</label>\n    <input type=\"text\" [(ngModel)]=\"genre\" name=\"genre\" class=\"form-control\" />\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" />\n</form>\n"
+module.exports = "<h2 class=\"page-header mt-5\">Modify Product</h2>\n<form (submit)=\"onModifySubmit()\">\n  <div class=\"form-group\">\n    <label>Name</label>\n    <input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\" />\n  </div>\n  <div class=\"form-group\">\n    <label>Chapters</label>\n    <input\n      type=\"number\"\n      [(ngModel)]=\"chapters\"\n      name=\"chapters\"\n      class=\"form-control\"\n    />\n  </div>\n  <div class=\"form-group\">\n    <label>Genre</label>\n    <input type=\"text\" [(ngModel)]=\"genre\" name=\"genre\" class=\"form-control\" />\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\" />\n</form>\n"
 
 /***/ }),
 
